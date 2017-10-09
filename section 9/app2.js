@@ -4,14 +4,22 @@ var app = express();
 var port = process.env.PORT || 3000;
 
 app.get('/', function (req,res){
-    res.send('<html><head><link href=assets/style.css type=text/css rel=stylesheet /></head><body><h1>Hello WOrld!</h1></body></html>');
+    res.render('index');
 });
+
+app.use('/', function(req,res,next){
+    console.log('request url: ' + req.url);
+    next();
+});
+//using templates
+app.set('view engine','ejs');
 
 app.get('/api', function(req, res) {
     res.json({ firstname: 'John', lastname: 'Doe'});
 });
+
 app.use('/assets',express.static(__dirname + '/public'));
 app.get('/person/:id', function(req, res){
-    res.send('<html><head></head><body><h1>Hello WOrld!:'+ req.params.id +'</h1></body></html>');
-});
+    res.render('person', {ID: req.params.id});
+    });
 app.listen(port);
