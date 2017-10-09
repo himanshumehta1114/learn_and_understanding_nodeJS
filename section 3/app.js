@@ -1,0 +1,2 @@
+require('./greet.js');
+greet();
