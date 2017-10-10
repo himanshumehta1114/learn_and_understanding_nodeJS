@@ -1,0 +1,18 @@
+<html ng-app="TestApp">
+    <head>
+        <title>The MEAN Stack</title>
+        <link rel="stylesheet" href="assets/style.css">
+    </head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.js"></script>
+    <body ng-controller="MainController as vm">
+       <input type="text" ng-model="vm.message">
+    </br>
+        {{ vm.message}}
+        <ul>
+            <li ng-repeat="person in vm.people">
+                {{person.name}}
+            </li>
+        </ul>
+        <script src="/assets/js/app.js"></script>
+    </body>
+</html>
