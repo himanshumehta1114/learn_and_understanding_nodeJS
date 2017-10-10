@@ -3,8 +3,20 @@ var app = express();
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 
+var people = [
+    {
+        name: 'John Doe'
+    },
+    {
+        name: 'Jane Doe'
+    },
+    {
+        name: 'Jim Doe'
+    }
+];
+
 app.get('/', function (req,res){
-    res.render('index');
+    res.render('index', {serverPeople : people});
 });
 
 app.use('/', function(req,res,next){
